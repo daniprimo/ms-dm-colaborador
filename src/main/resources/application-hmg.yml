@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: mscolaborador
+  datasource:
+    url: jdbc:postgresql://${SERVER_DATABASE}:${DATABASE_PORT}/colaborador
+    username: postgres
+    password: ${DATABASE_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+
+server:
+  port: 0
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@${EUREKA_SERVER}:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+mq:
+  queues:
+    canal-colaborador: canal-colaborador
+
+
+
+management:
+  endpoint:
+    web:
+      exposure:
+        include: '*'
+
+
+endereco:
+  database: jdbc:postgresql://${SERVER_DATABASE}:${DATABASE_PORT}/colaborador
+  username: postgres
+  password: ${DATABASE_PASSWORD}
+
